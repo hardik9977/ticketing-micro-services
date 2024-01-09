@@ -9,7 +9,6 @@ import { PaymentCreateListener } from './events/payment-created-listener';
 
 const PORT = 3000;
 const start = async () => {
-    console.log("Staring...")
     if (!process.env.JWT_KEY || !process.env.MONGO_URI || !process.env.NATS_URL || !process.env.NATS_CLUSTER_ID || !process.env.NATS_CLIENT_ID) {
         throw new Error("JWT_KEY or MONGO_URI not found");
     }

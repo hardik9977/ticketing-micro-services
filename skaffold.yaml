@@ -1,0 +1,59 @@
+apiVersion: skaffold/v4beta8
+kind: Config
+metadata:
+  name: ticketing
+build:
+  local:
+    push: false
+  artifacts:
+    - image: hardik9977/auth
+      context: auth
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: "src/**/*.ts"
+    - image: hardik9977/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: "**/*.js"
+    - image: hardik9977/tickets
+      context: tickets
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: "**/*.ts"
+    - image: hardik9977/orders
+      context: orders
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: "**/*.ts"
+    - image: hardik9977/expiration
+      context: expiration
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: "**/*.ts"
+    - image: hardik9977/payments
+      context: payments
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: "**/*.ts"
+manifests:
+  rawYaml:
+    - infra/k8s/*

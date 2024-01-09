@@ -6,7 +6,8 @@
   "scripts": {
     "start": "ts-node-dev src/index.ts",
     "lint": "eslint . --fix",
-    "test": "jest --watchAll --no-cache --verbose"
+    "test": "jest --watchAll --no-cache --verbose",
+    "test:ci": "jest"
   },
   "jest": {
     "preset": "ts-jest",
